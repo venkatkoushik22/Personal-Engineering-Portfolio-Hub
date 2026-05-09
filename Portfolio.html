@@ -1,0 +1,1191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Venkat Koushik • AI Systems Engineer</title>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<style>
+:root{
+  --ink:#17172f;
+  --muted:#62677a;
+  --purple:#8b5cf6;
+  --pink:#ec4899;
+  --blue:#4f7cff;
+  --stroke:rgba(255,255,255,.72);
+  --shadow:0 18px 48px rgba(120,100,200,.13);
+}
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+html{
+  scroll-behavior:smooth;
+}
+
+body{
+  font-family:Inter,sans-serif;
+  color:var(--ink);
+  overflow-x:hidden;
+  background:
+    radial-gradient(circle at 8% 12%,rgba(180,160,255,.42),transparent 32%),
+    radial-gradient(circle at 88% 14%,rgba(255,190,225,.50),transparent 34%),
+    radial-gradient(circle at 95% 75%,rgba(140,190,255,.40),transparent 30%),
+    linear-gradient(135deg,#f8f7ff 0%,#eef3ff 38%,#fff2fa 100%);
+}
+
+body:before{
+  content:"";
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  z-index:-4;
+  background-image:
+    linear-gradient(rgba(255,255,255,.24) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(255,255,255,.20) 1px,transparent 1px);
+  background-size:72px 72px;
+  mask-image:linear-gradient(to bottom,black,transparent 80%);
+}
+
+.bg-orb{
+  position:fixed;
+  border-radius:999px;
+  filter:blur(80px);
+  opacity:.42;
+  z-index:-3;
+  transform:translateZ(0);
+}
+
+.bg-orb.one{
+  width:420px;
+  height:420px;
+  background:#bda7ff;
+  left:-80px;
+  top:120px;
+}
+
+.bg-orb.two{
+  width:460px;
+  height:460px;
+  background:#ffc6e6;
+  right:-140px;
+  top:220px;
+}
+
+.bg-orb.three{
+  width:380px;
+  height:380px;
+  background:#9ed4ff;
+  right:8%;
+  bottom:8%;
+}
+
+.glass{
+  background:linear-gradient(135deg,rgba(255,255,255,.68),rgba(255,255,255,.38));
+  border:1px solid var(--stroke);
+  box-shadow:var(--shadow), inset 0 1px 0 rgba(255,255,255,.8);
+  backdrop-filter:blur(12px) saturate(125%);
+  -webkit-backdrop-filter:blur(12px) saturate(125%);
+}
+
+.liquid{
+  position:relative;
+  overflow:hidden;
+}
+
+.liquid:before{
+  content:"";
+  position:absolute;
+  inset:-1px;
+  background:linear-gradient(135deg,rgba(255,255,255,.42),transparent 48%,rgba(139,92,246,.10));
+  opacity:.28;
+  pointer-events:none;
+}
+
+nav{
+  width:calc(100% - 44px);
+  max-width:1120px;
+  position:fixed;
+  top:24px;
+  left:50%;
+  transform:translateX(-50%);
+  z-index:1000;
+  border-radius:999px;
+}
+
+.nav-inner{
+  height:74px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:24px;
+  padding:10px 16px;
+  border-radius:999px;
+  overflow:hidden;
+}
+
+.brand{
+  flex:0 0 auto;
+  width:54px;
+  height:54px;
+  border-radius:22px;
+  display:grid;
+  place-items:center;
+  background:rgba(255,255,255,.68);
+  border:1px solid rgba(255,255,255,.85);
+  box-shadow:0 12px 30px rgba(60,60,120,.10);
+  font-weight:900;
+  letter-spacing:-1px;
+  position:relative;
+}
+
+.brand:after{
+  content:"";
+  width:9px;
+  height:9px;
+  border-radius:999px;
+  background:#262600;
+  position:absolute;
+  right:9px;
+  bottom:8px;
+}
+
+.nav-links{
+  display:flex;
+  gap:clamp(16px,3vw,34px);
+  align-items:center;
+  justify-content:center;
+  flex:1;
+  min-width:0;
+}
+
+.nav-links a{
+  color:#303348;
+  text-decoration:none;
+  font-size:12px;
+  font-weight:800;
+  transition:.2s ease;
+  white-space:nowrap;
+}
+
+.nav-links a:hover{
+  color:#7c3aed;
+}
+
+.theme-dot{
+  flex:0 0 auto;
+  width:52px;
+  height:52px;
+  border-radius:50%;
+  display:grid;
+  place-items:center;
+  background:rgba(255,255,255,.66);
+  border:1px solid rgba(255,255,255,.85);
+  box-shadow:0 12px 30px rgba(60,60,120,.10);
+}
+
+section{
+  position:relative;
+  z-index:2;
+}
+
+.hero{
+  min-height:100vh;
+  padding:130px 6vw 60px;
+  display:grid;
+  place-items:center;
+}
+
+.hero-wrap{
+  width:min(1120px,100%);
+  display:grid;
+  grid-template-columns:1.05fr .95fr;
+  gap:60px;
+  align-items:center;
+}
+
+.eyebrow{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  color:#6c7082;
+  font-size:11px;
+  letter-spacing:8px;
+  font-weight:900;
+  text-transform:uppercase;
+  margin-bottom:22px;
+}
+
+.eyebrow:before{
+  content:"";
+  width:10px;
+  height:10px;
+  background:#262600;
+  border-radius:999px;
+  box-shadow:0 0 0 8px rgba(38,38,0,.07);
+}
+
+.hero-title{
+  font-size:clamp(66px,9vw,132px);
+  line-height:.88;
+  letter-spacing:-8px;
+  font-weight:900;
+}
+
+.hero-title span{
+  display:block;
+}
+
+.gradient-text{
+  background:linear-gradient(120deg,#4f46e5 0%,#8b5cf6 45%,#ec4899 100%);
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+}
+
+.hero-copy{
+  color:var(--muted);
+  max-width:610px;
+  font-size:18px;
+  line-height:1.75;
+  margin-top:26px;
+}
+
+.hero-actions{
+  display:flex;
+  align-items:center;
+  gap:18px;
+  flex-wrap:wrap;
+  margin-top:34px;
+}
+
+.btn{
+  min-height:54px;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:14px;
+  padding:0 25px;
+  border-radius:999px;
+  text-decoration:none;
+  font-size:13px;
+  font-weight:800;
+  transition:.22s ease;
+}
+
+.btn-main{
+  color:white;
+  background:linear-gradient(135deg,#7c3aed,#4f7cff);
+  box-shadow:0 16px 36px rgba(103,85,230,.26);
+}
+
+.btn-soft{
+  color:#1f2338;
+  background:rgba(255,255,255,.58);
+  border:1px solid rgba(255,255,255,.75);
+}
+
+.btn:hover{
+  transform:translateY(-3px);
+}
+
+.stats{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  max-width:560px;
+  margin-top:30px;
+  border-radius:25px;
+}
+
+.stat{
+  padding:18px 22px;
+  text-align:center;
+  border-right:1px solid rgba(120,120,160,.16);
+}
+
+.stat:last-child{
+  border-right:0;
+}
+
+.stat strong{
+  display:block;
+  font-size:25px;
+  color:#7c3aed;
+}
+
+.stat span{
+  font-size:11px;
+  color:#555b70;
+}
+
+.avatar-stage{
+  min-height:520px;
+  position:relative;
+}
+
+.avatar-card{
+  width:min(410px,88vw);
+  height:410px;
+  border-radius:76px;
+  position:absolute;
+  right:0;
+  top:38px;
+  display:grid;
+  place-items:center;
+  transform:rotate(1.5deg);
+}
+
+.avatar-card:after{
+  content:"";
+  position:absolute;
+  inset:14px;
+  border:2px solid rgba(255,255,255,.82);
+  border-radius:66px;
+  pointer-events:none;
+  z-index:4;
+}
+
+.avatar-img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  border-radius:76px;
+  position:relative;
+  z-index:2;
+}
+
+.orbit{
+  position:absolute;
+  inset:15px -40px auto auto;
+  width:540px;
+  height:540px;
+  border:1px solid rgba(255,255,255,.62);
+  border-radius:50%;
+  transform:rotate(-22deg);
+  pointer-events:none;
+}
+
+.orbit:before,
+.orbit:after{
+  content:"";
+  position:absolute;
+  width:30px;
+  height:30px;
+  border-radius:50%;
+  background:rgba(255,255,255,.75);
+  box-shadow:0 14px 24px rgba(120,100,200,.12);
+}
+
+.orbit:before{
+  top:80px;
+  right:54px;
+}
+
+.orbit:after{
+  bottom:95px;
+  left:34px;
+}
+
+.page{
+  width:min(1120px,92vw);
+  margin:0 auto;
+}
+
+.bento{
+  border-radius:34px;
+  padding:28px;
+  margin-bottom:18px;
+}
+
+.section-grid{
+  display:grid;
+  grid-template-columns:250px 1fr;
+  gap:28px;
+}
+
+.section-label{
+  color:#6c7082;
+  font-size:10px;
+  letter-spacing:7px;
+  font-weight:900;
+  text-transform:uppercase;
+  display:flex;
+  gap:10px;
+  align-items:center;
+  margin-bottom:18px;
+}
+
+.section-label:before{
+  content:"";
+  width:8px;
+  height:8px;
+  background:#1c2035;
+  border-radius:50%;
+}
+
+.section-title{
+  font-size:clamp(33px,4vw,54px);
+  line-height:1.02;
+  letter-spacing:-2px;
+  font-weight:900;
+}
+
+.section-title span{
+  display:block;
+}
+
+.experience-list{
+  display:grid;
+  gap:16px;
+}
+
+.exp-card{
+  border-radius:28px;
+  padding:25px;
+  display:grid;
+  grid-template-columns:82px 1fr;
+  gap:24px;
+  transition:.22s ease;
+}
+
+.exp-card:hover{
+  transform:translateY(-5px);
+}
+
+.logo-box{
+  height:82px;
+  width:82px;
+  border-radius:18px;
+  background:rgba(255,255,255,.65);
+  border:1px solid rgba(255,255,255,.80);
+  display:grid;
+  place-items:center;
+  font-weight:900;
+  color:#8b5cf6;
+  text-align:center;
+  font-size:13px;
+}
+
+.exp-card h3{
+  font-size:23px;
+  font-weight:900;
+  margin-bottom:5px;
+}
+
+.meta{
+  display:flex;
+  flex-wrap:wrap;
+  gap:13px;
+  color:#5f6474;
+  font-size:12px;
+  font-weight:700;
+  margin-bottom:14px;
+}
+
+.exp-card ul{
+  padding-left:18px;
+  color:#52586b;
+  line-height:1.65;
+  font-size:14px;
+}
+
+.exp-card li{
+  margin-bottom:7px;
+}
+
+.projects-head{
+  display:flex;
+  align-items:end;
+  justify-content:space-between;
+  gap:30px;
+  margin-bottom:24px;
+}
+
+.projects-row{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:16px;
+}
+
+.project-card{
+  min-height:205px;
+  border-radius:26px;
+  padding:22px;
+  position:relative;
+  overflow:hidden;
+  transition:.22s ease;
+}
+
+.project-card:hover{
+  transform:translateY(-6px);
+}
+
+.project-card strong{
+  color:#8b5cf6;
+  font-size:22px;
+}
+
+.project-card h3{
+  font-size:18px;
+  line-height:1.1;
+  margin:16px 0 13px;
+  font-weight:900;
+}
+
+.project-card p{
+  color:#5d6378;
+  font-size:13px;
+  line-height:1.55;
+  padding-bottom:30px;
+}
+
+.pill{
+  position:absolute;
+  left:18px;
+  bottom:18px;
+  padding:8px 12px;
+  border-radius:999px;
+  background:rgba(255,255,255,.58);
+  border:1px solid rgba(255,255,255,.72);
+  font-size:10px;
+  font-weight:800;
+}
+
+.education-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:16px;
+}
+
+.edu-card{
+  border-radius:26px;
+  padding:24px;
+  display:grid;
+  grid-template-columns:76px 1fr;
+  gap:20px;
+  transition:.22s ease;
+}
+
+.edu-card:hover{
+  transform:translateY(-5px);
+}
+
+.edu-logo{
+  width:76px;
+  height:76px;
+  border-radius:50%;
+  background:rgba(255,255,255,.62);
+  display:grid;
+  place-items:center;
+  border:1px solid rgba(255,255,255,.75);
+  font-weight:900;
+  color:#7c3aed;
+}
+
+.edu-card h3{
+  font-size:19px;
+  font-weight:900;
+}
+
+.edu-card p{
+  color:#5d6378;
+  font-size:13px;
+  line-height:1.55;
+  margin-top:8px;
+}
+
+.skills-contact{
+  display:grid;
+  grid-template-columns:1.4fr .6fr;
+  gap:18px;
+}
+
+.skills-wrap{
+  display:flex;
+  flex-wrap:wrap;
+  gap:12px;
+}
+
+.skill{
+  border-radius:999px;
+  padding:10px 15px;
+  background:rgba(255,255,255,.58);
+  border:1px solid rgba(255,255,255,.75);
+  color:#33384c;
+  font-size:12px;
+  font-weight:800;
+  transition:.18s ease;
+}
+
+.skill:hover{
+  transform:translateY(-3px);
+}
+
+.contact-mini{
+  border-radius:30px;
+  padding:28px;
+}
+
+.contact-icons{
+  display:flex;
+  gap:14px;
+  margin-top:22px;
+}
+
+.contact-icons a{
+  width:46px;
+  height:46px;
+  border-radius:15px;
+  display:grid;
+  place-items:center;
+  text-decoration:none;
+  color:#20243a;
+  background:rgba(255,255,255,.68);
+  border:1px solid rgba(255,255,255,.78);
+  box-shadow:0 10px 24px rgba(90,90,150,.10);
+  transition:.22s;
+}
+
+.contact-icons a:hover{
+  transform:translateY(-4px);
+  color:#7c3aed;
+}
+
+.motto{
+  width:min(640px,92vw);
+  margin:24px auto 70px;
+  padding:22px 28px;
+  border-radius:999px;
+  text-align:center;
+  font-size:21px;
+  font-weight:700;
+}
+
+.motto span{
+  color:#7c3aed;
+}
+
+.reveal{
+  opacity:0;
+  transform:translateY(32px);
+  transition:opacity .65s ease,transform .65s ease;
+}
+
+.reveal.visible{
+  opacity:1;
+  transform:translateY(0);
+}
+
+@media(max-width:950px){
+  .nav-links{display:none}
+  .hero-wrap{grid-template-columns:1fr}
+  .avatar-stage{min-height:430px}
+  .avatar-card{left:50%;right:auto;transform:translateX(-50%)}
+  .section-grid{grid-template-columns:1fr}
+  .projects-row{grid-template-columns:1fr 1fr}
+  .education-grid{grid-template-columns:1fr}
+  .skills-contact{grid-template-columns:1fr}
+}
+
+@media(max-width:620px){
+  nav{top:14px;width:calc(100% - 24px)}
+  .hero{padding-top:115px}
+  .hero-title{letter-spacing:-4px}
+  .stats{grid-template-columns:repeat(2,1fr)}
+  .projects-row{grid-template-columns:1fr}
+  .exp-card{grid-template-columns:1fr}
+  .avatar-card{height:330px}
+  .theme-dot{display:none}
+}
+
+@media (prefers-reduced-motion: reduce){
+  *,
+  *:before,
+  *:after{
+    animation:none !important;
+    transition:none !important;
+    scroll-behavior:auto !important;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<div class="bg-orb one"></div>
+<div class="bg-orb two"></div>
+<div class="bg-orb three"></div>
+
+<nav class="glass liquid">
+  <div class="nav-inner">
+    <div class="brand">VK</div>
+
+    <div class="nav-links">
+      <a href="#home">Home</a>
+      <a href="#experience">Experience</a>
+      <a href="#projects">Projects</a>
+      <a href="#education">Education</a>
+      <a href="#skills">Skills</a>
+      <a href="#contact">Contact</a>
+    </div>
+
+    <div class="theme-dot">
+      <i class="fa-regular fa-sun"></i>
+    </div>
+  </div>
+</nav>
+
+<section class="hero" id="home">
+  <div class="hero-wrap">
+
+    <div>
+      <div class="eyebrow">AI Systems Engineer</div>
+
+      <h1 class="hero-title">
+        <span>Hey, I'm</span>
+        <span class="gradient-text">Venkat.</span>
+      </h1>
+
+      <p class="hero-copy">
+        Designing premium machine learning systems, autonomous AI architectures,
+        behavioral intelligence, and scalable deployment pipelines that solve real-world problems.
+      </p>
+
+      <div class="hero-actions">
+        <a href="#projects" class="btn btn-main">
+          Explore My Work <i class="fa-solid fa-arrow-right"></i>
+        </a>
+
+        <a href="Venkat_koushik_resume.pdf" class="btn btn-soft glass" download>
+          Download Resume <i class="fa-solid fa-download"></i>
+        </a>
+      </div>
+
+      <div class="stats glass liquid">
+        <div class="stat">
+          <strong>15+</strong>
+          <span>Projects</span>
+        </div>
+
+        <div class="stat">
+          <strong>2+</strong>
+          <span>Years Experience</span>
+        </div>
+
+        <div class="stat">
+          <strong>4</strong>
+          <span>Internships</span>
+        </div>
+
+        <div class="stat">
+          <strong>2</strong>
+          <span>Degrees</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="avatar-stage">
+      <div class="orbit"></div>
+
+      <div class="avatar-card glass liquid">
+        <img src="Venkat koushik.png" alt="Venkat Koushik" class="avatar-img">
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<main class="page">
+
+  <section class="bento glass liquid reveal" id="experience">
+    <div class="section-grid">
+
+      <div>
+        <div class="section-label">Experience</div>
+
+        <h2 class="section-title">
+          <span>My Professional</span>
+          <span>Trajectory.</span>
+        </h2>
+      </div>
+
+      <div class="experience-list">
+
+        <article class="exp-card glass liquid">
+          <div class="logo-box">Aspire</div>
+
+          <div>
+            <h3>ML Engineer Intern</h3>
+
+            <div class="meta">
+              <span>Aspire Technolab</span>
+              <span>Dec 2023 to May 2024</span>
+              <span>Bengaluru, India</span>
+            </div>
+
+            <ul>
+              <li>Worked on domain-specific LLMs using Llama 2, LoRA, tokenization, and performance benchmarking.</li>
+              <li>Built NLP classification systems for sentiment analysis and spam detection using PyTorch and Hugging Face.</li>
+              <li>Supported CNN-based visual inspection workflows with OpenCV preprocessing and REST API integration.</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="exp-card glass liquid">
+          <div class="logo-box">Fun<br>Motion</div>
+
+          <div>
+            <h3>Game Development Intern</h3>
+
+            <div class="meta">
+              <span>FunMotionLabs</span>
+              <span>Jan 2023 to Dec 2023</span>
+              <span>Hyderabad, India</span>
+              <span>Hybrid</span>
+            </div>
+
+            <ul>
+              <li>Built modular gameplay components for interactive game environments across hybrid production cycles.</li>
+              <li>Engineered NPC behavior systems using Finite State Machines for dynamic in-game decision-making.</li>
+              <li>Prototyped AR and VR experiences using Unity and OpenXR with spatial 3D interaction models.</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="exp-card glass liquid">
+          <div class="logo-box">Kurenai</div>
+
+          <div>
+            <h3>Technical Intern, Kurenai Division</h3>
+
+            <div class="meta">
+              <span>Kurenai, FunMotionLabs Division</span>
+              <span>Feb 2023 to Apr 2023</span>
+              <span>Chennai, India</span>
+              <span>Remote</span>
+            </div>
+
+            <ul>
+              <li>Delivered a focused 3-month module with specialized gameplay components for parent pipeline integration.</li>
+              <li>Implemented responsive NPC logic using FSM-based architectures and reusable modular systems.</li>
+              <li>Coordinated technical handoff, version control, and integration consistency across environments.</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="exp-card glass liquid">
+          <div class="logo-box">AWS</div>
+
+          <div>
+            <h3>AWS ML Developer Trainee</h3>
+
+            <div class="meta">
+              <span>Credo Systemz</span>
+              <span>July 2022 to Oct 2022</span>
+              <span>Chennai, India</span>
+            </div>
+
+            <ul>
+              <li>Built end-to-end ML workflows on AWS SageMaker from S3 data ingestion to endpoint deployment.</li>
+              <li>Used AWS Glue, Rekognition, and Comprehend for ETL, visual classification, and NLP entity extraction.</li>
+            </ul>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <section class="bento glass liquid reveal" id="projects">
+    <div class="projects-head">
+      <div>
+        <div class="section-label">Projects</div>
+
+        <h2 class="section-title">
+          <span>15 Production Grade</span>
+          <span>AI Architectures.</span>
+        </h2>
+      </div>
+    </div>
+
+    <div class="projects-row">
+
+      <article class="project-card glass liquid">
+        <strong>01</strong>
+        <h3>Biomedical Multimodal RAG</h3>
+        <p>Medical text and image retrieval system using IDEFICS2-8B, OpenCLIP, LangChain, FAISS, PyTorch, and Docker.</p>
+        <div class="pill">VLM / Medical AI</div>
+      </article>
+
+      <article class="project-card glass liquid">
+        <strong>02</strong>
+        <h3>Secure Local RAG Platform</h3>
+        <p>Privacy-first local document intelligence system using LLaMA 3, ChromaDB, LangChain, FastAPI, and Docker.</p>
+        <div class="pill">LLaMA 3 / ChromaDB</div>
+      </article>
+
+      <article class="project-card glass liquid">
+        <strong>03</strong>
+        <h3>Market Intelligence Agent</h3>
+        <p>Autonomous analytics system translating natural language into SQL pipelines with memory and business insight generation.</p>
+        <div class="pill">OpenAI / BigQuery</div>
+      </article>
+
+      <article class="project-card glass liquid">
+        <strong>04</strong>
+        <h3>Biomedical Agent</h3>
+        <p>LangGraph-powered research orchestration using biomedical APIs, retrieval workflows, and reasoning pipelines.</p>
+        <div class="pill">LangGraph / Bio Info</div>
+      </article>
+
+      <article class="project-card glass liquid">
+        <strong>05</strong>
+        <h3>Portfolio Assistant</h3>
+        <p>NLP-powered assistant for professional portfolio queries, skill summaries, and project exploration.</p>
+        <div class="pill">NLP / RAG</div>
+      </article>
+
+      <article class="project-card glass liquid">
+        <strong>06</strong>
+        <h3>Speech Emotion Recognition</h3>
+        <p>Real-time 1D CNN audio classification system using PyTorch and Librosa for emotion detection.</p>
+        <div class="pill">PyTorch / CNN</div>
+      </article>
+
+      <article class="project-card glass liquid">
+        <strong>07</strong>
+        <h3>Robotic Manipulation</h3>
+        <p>Reinforcement learning and behavioral cloning pipeline for simulated robotic control environments.</p>
+        <div class="pill">RL / PyBullet</div>
+      </article>
+
+      <article class="project-card glass liquid">
+        <strong>08</strong>
+        <h3>Clinical LLM Pipeline</h3>
+        <p>Healthcare RAG benchmarking framework for medical faithfulness, retrieval quality, and answer reliability.</p>
+        <div class="pill">MLOps / Clinical AI</div>
+      </article>
+
+      <article class="project-card glass liquid">
+        <strong>09</strong>
+        <h3>Anomaly Detection Engine</h3>
+        <p>Streaming XGBoost service for telemetry analysis, security monitoring, and anomaly classification.</p>
+        <div class="pill">XGBoost / Kafka</div>
+      </article>
+
+      <article class="project-card glass liquid">
+        <strong>10</strong>
+        <h3>Scalable ETL Pipeline</h3>
+        <p>Distributed PySpark pipelines on AWS EMR and Redshift for large-scale analytics workflows.</p>
+        <div class="pill">AWS / Spark</div>
+      </article>
+
+      <article class="project-card glass liquid">
+        <strong>11</strong>
+        <h3>Blockchain Compliance</h3>
+        <p>Ethereum smart contracts for tamper-proof AI training audit trails and compliance verification.</p>
+        <div class="pill">Solidity / Web3</div>
+      </article>
+
+      <article class="project-card glass liquid">
+        <strong>12</strong>
+        <h3>Neural Query System</h3>
+        <p>Multi-stage neural document ranking system using BERT, FAISS, and Kubernetes deployment.</p>
+        <div class="pill">BERT / FAISS</div>
+      </article>
+
+      <article class="project-card glass liquid">
+        <strong>13</strong>
+        <h3>Brain Tumor Detection</h3>
+        <p>Medical imaging system using OpenCV and Fuzzy C-means segmentation for diagnostic support.</p>
+        <div class="pill">OpenCV / Imaging</div>
+      </article>
+
+      <article class="project-card glass liquid">
+        <strong>14</strong>
+        <h3>Fraud Detection System</h3>
+        <p>Supervised ML system for identifying high-risk financial transactions and suspicious user behavior.</p>
+        <div class="pill">ML / Fraud</div>
+      </article>
+
+      <article class="project-card glass liquid">
+        <strong>15</strong>
+        <h3>Hotstar Clone</h3>
+        <p>Responsive streaming frontend demonstrating modern layout, UI structure, and visual design fundamentals.</p>
+        <div class="pill">Frontend / UI</div>
+      </article>
+
+    </div>
+  </section>
+
+  <section class="bento glass liquid reveal" id="education">
+    <div class="section-grid">
+
+      <div>
+        <div class="section-label">Education</div>
+
+        <h2 class="section-title">
+          <span>Academic</span>
+          <span>Foundation.</span>
+        </h2>
+      </div>
+
+      <div class="education-grid">
+
+        <article class="edu-card glass liquid">
+          <div class="edu-logo">SIT</div>
+
+          <div>
+            <h3>MS Applied Artificial Intelligence</h3>
+            <p><strong>Stevens Institute of Technology</strong></p>
+            <p>Aug 2024 to May 2026, CGPA 3.76. Coursework includes Machine Learning, Deep Learning, Big Data Analytics, Pattern Recognition, Probability and Stochastics.</p>
+          </div>
+        </article>
+
+        <article class="edu-card glass liquid">
+          <div class="edu-logo">SU</div>
+
+          <div>
+            <h3>B.E. Computer Science Engineering</h3>
+            <p><strong>Sathyabama University</strong></p>
+            <p>Aug 2020 to May 2024, CGPA 8.7. Coursework includes AI, NLP, Data Science, Big Data Analytics, and Design and Analysis of Algorithms.</p>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <section class="skills-contact reveal" id="skills">
+
+    <div class="bento glass liquid">
+      <div class="section-label">Skills</div>
+
+      <h2 class="section-title">
+        <span>Technical</span>
+        <span>Arsenal.</span>
+      </h2>
+
+      <div class="skills-wrap" style="margin-top:24px;">
+        <span class="skill">Python</span>
+        <span class="skill">SQL</span>
+        <span class="skill">TypeScript</span>
+        <span class="skill">FastAPI</span>
+        <span class="skill">C#</span>
+        <span class="skill">RAG Pipelines</span>
+        <span class="skill">Agentic Workflows</span>
+        <span class="skill">LangChain</span>
+        <span class="skill">LangGraph</span>
+        <span class="skill">LoRA Fine-Tuning</span>
+        <span class="skill">PyTorch</span>
+        <span class="skill">TensorFlow</span>
+        <span class="skill">Scikit-learn</span>
+        <span class="skill">OpenCV</span>
+        <span class="skill">Transformers</span>
+        <span class="skill">XGBoost</span>
+        <span class="skill">FSM</span>
+        <span class="skill">Reinforcement Learning</span>
+        <span class="skill">Apache Spark</span>
+        <span class="skill">Airflow</span>
+        <span class="skill">Docker</span>
+        <span class="skill">Kubernetes</span>
+        <span class="skill">MLflow</span>
+        <span class="skill">AWS SageMaker</span>
+        <span class="skill">AWS S3</span>
+        <span class="skill">AWS Glue</span>
+        <span class="skill">BigQuery</span>
+        <span class="skill">Vertex AI</span>
+        <span class="skill">Unity</span>
+        <span class="skill">OpenXR</span>
+        <span class="skill">Git</span>
+      </div>
+    </div>
+
+    <div class="contact-mini glass liquid" id="contact">
+      <div class="section-label">Let's Connect</div>
+
+      <h2 class="section-title" style="font-size:34px;">
+        <span>Open to build</span>
+        <span>the future.</span>
+      </h2>
+
+      <div class="contact-icons">
+        <a href="mailto:venkatkoushikp@gmail.com" title="Email">
+          <i class="fa-regular fa-envelope"></i>
+        </a>
+
+        <a href="https://linkedin.com" target="_blank" title="LinkedIn">
+          <i class="fa-brands fa-linkedin-in"></i>
+        </a>
+
+        <a href="https://github.com" target="_blank" title="GitHub">
+          <i class="fa-brands fa-github"></i>
+        </a>
+
+        <a href="tel:+12018983362" title="Phone">
+          <i class="fa-solid fa-phone"></i>
+        </a>
+      </div>
+    </div>
+
+  </section>
+
+</main>
+
+<div class="motto glass liquid reveal">
+  “If you must doubt something, <span>doubt your limits.</span>”
+</div>
+
+<script>
+gsap.from(".eyebrow,.hero-title span,.hero-copy,.hero-actions,.stats",{
+  y:52,
+  opacity:0,
+  duration:.9,
+  stagger:.09,
+  ease:"power3.out"
+});
+
+gsap.from(".avatar-card",{
+  y:55,
+  rotate:5,
+  opacity:0,
+  duration:.95,
+  delay:.18,
+  ease:"power3.out"
+});
+
+gsap.to(".avatar-card",{
+  y:-10,
+  duration:5,
+  repeat:-1,
+  yoyo:true,
+  ease:"sine.inOut"
+});
+
+const revealItems = document.querySelectorAll(".reveal");
+
+const observer = new IntersectionObserver(function(entries){
+  entries.forEach(function(entry){
+    if(entry.isIntersecting){
+      entry.target.classList.add("visible");
+      observer.unobserve(entry.target);
+    }
+  });
+},{
+  threshold:.12
+});
+
+revealItems.forEach(function(item){
+  observer.observe(item);
+});
+</script>
+
+</body>
+</html>
