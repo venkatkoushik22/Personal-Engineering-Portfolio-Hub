@@ -3,7 +3,8 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Venkat Koushik • AI Systems Engineer</title>
+<title>Venkat Koushik • AI/ML Engineer</title>
+<meta name="description" content="Venkat Koushik - AI/ML Engineer focused on LLM red-teaming, private RAG platforms, multimodal retrieval, hallucination analysis, and production-ready ML workflows." />
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
 
@@ -40,6 +41,18 @@ body{
     radial-gradient(circle at 88% 14%,rgba(255,190,225,.50),transparent 34%),
     radial-gradient(circle at 95% 75%,rgba(140,190,255,.40),transparent 30%),
     linear-gradient(135deg,#f8f7ff 0%,#eef3ff 38%,#fff2fa 100%);
+}
+
+body:after{
+  content:"";
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  z-index:9999;
+  opacity:.022;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  background-repeat:repeat;
+  background-size:256px 256px;
 }
 
 body:before{
@@ -213,12 +226,19 @@ section{
 }
 
 .eyebrow{
-  display:flex;
+  display:inline-flex;
   align-items:center;
-  gap:12px;
-  color:#6c7082;
+  gap:10px;
+  color:#5b45c7;
+  background:rgba(255,255,255,.58);
+  border:1px solid rgba(255,255,255,.82);
+  box-shadow:0 12px 26px rgba(90,90,150,.08);
+  backdrop-filter:blur(8px);
+  -webkit-backdrop-filter:blur(8px);
+  border-radius:999px;
+  padding:8px 16px;
   font-size:11px;
-  letter-spacing:8px;
+  letter-spacing:4px;
   font-weight:900;
   text-transform:uppercase;
   margin-bottom:22px;
@@ -226,11 +246,11 @@ section{
 
 .eyebrow:before{
   content:"";
-  width:10px;
-  height:10px;
-  background:#262600;
+  width:7px;
+  height:7px;
+  background:linear-gradient(135deg,#8b5cf6,#ec4899);
   border-radius:999px;
-  box-shadow:0 0 0 8px rgba(38,38,0,.07);
+  box-shadow:0 0 0 6px rgba(139,92,246,.08);
 }
 
 .hero-title{
@@ -560,17 +580,18 @@ section{
 
 .education-grid{
   display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:16px;
+  grid-template-columns:1fr;
+  gap:18px;
 }
 
 .edu-card{
-  border-radius:26px;
-  padding:24px;
+  border-radius:30px;
+  padding:30px;
   display:grid;
-  grid-template-columns:76px 1fr;
-  gap:20px;
+  grid-template-columns:88px 1fr;
+  gap:24px;
   transition:.22s ease;
+  min-height:150px;
 }
 
 .edu-card:hover{
@@ -578,8 +599,8 @@ section{
 }
 
 .edu-logo{
-  width:76px;
-  height:76px;
+  width:88px;
+  height:88px;
   border-radius:50%;
   background:rgba(255,255,255,.62);
   display:grid;
@@ -599,6 +620,50 @@ section{
   font-size:13px;
   line-height:1.55;
   margin-top:8px;
+}
+
+.leadership-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:16px;
+}
+
+.lead-card{
+  border-radius:26px;
+  padding:24px;
+  min-height:185px;
+  position:relative;
+  overflow:hidden;
+  transition:.22s ease;
+}
+
+.lead-card:hover{
+  transform:translateY(-5px);
+}
+
+.lead-icon{
+  width:48px;
+  height:48px;
+  border-radius:16px;
+  display:grid;
+  place-items:center;
+  background:rgba(255,255,255,.62);
+  border:1px solid rgba(255,255,255,.78);
+  color:#7c3aed;
+  margin-bottom:18px;
+}
+
+.lead-card h3{
+  font-size:18px;
+  line-height:1.15;
+  font-weight:900;
+  margin-bottom:10px;
+}
+
+.lead-card p{
+  color:#5d6378;
+  font-size:13px;
+  line-height:1.6;
 }
 
 .skills-contact{
@@ -621,11 +686,29 @@ section{
   color:#33384c;
   font-size:12px;
   font-weight:800;
-  transition:.18s ease;
+  transition:.22s ease;
+  position:relative;
+  overflow:hidden;
+}
+
+.skill:before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:linear-gradient(120deg,transparent 25%,rgba(139,92,246,.16) 50%,rgba(79,124,255,.12) 75%,transparent 100%);
+  transform:translateX(-105%);
+  transition:transform .42s ease;
 }
 
 .skill:hover{
   transform:translateY(-3px);
+  color:#6d28d9;
+  border-color:rgba(139,92,246,.38);
+  box-shadow:0 8px 20px rgba(139,92,246,.12);
+}
+
+.skill:hover:before{
+  transform:translateX(105%);
 }
 
 .contact-mini{
@@ -683,6 +766,127 @@ section{
   transform:translateY(0);
 }
 
+
+.nav-cta{
+  flex:0 0 auto;
+  min-height:44px;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  padding:0 18px;
+  border-radius:999px;
+  color:#262a40;
+  text-decoration:none;
+  font-size:12px;
+  font-weight:900;
+  background:rgba(255,255,255,.66);
+  border:1px solid rgba(255,255,255,.85);
+  box-shadow:0 12px 30px rgba(60,60,120,.10);
+  transition:.22s ease;
+}
+
+.nav-cta:hover{
+  transform:translateY(-2px);
+  color:#7c3aed;
+}
+
+.focus-strip{
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+  margin-top:24px;
+}
+
+.focus-chip{
+  padding:9px 13px;
+  border-radius:999px;
+  background:rgba(255,255,255,.54);
+  border:1px solid rgba(255,255,255,.74);
+  color:#34394d;
+  font-size:11px;
+  font-weight:900;
+  box-shadow:0 10px 22px rgba(90,90,150,.08);
+}
+
+.project-card.featured{
+  grid-column:span 2;
+  min-height:242px;
+}
+
+.project-card:after{
+  content:"";
+  position:absolute;
+  inset:auto -28% -70% -28%;
+  height:160px;
+  background:radial-gradient(circle,rgba(139,92,246,.18),transparent 68%);
+  opacity:0;
+  transition:.28s ease;
+  pointer-events:none;
+}
+
+.project-card:hover:after{
+  opacity:1;
+  transform:translateY(-14px);
+}
+
+.project-tags{
+  display:flex;
+  flex-wrap:wrap;
+  gap:7px;
+  margin:4px 0 16px;
+}
+
+.project-tags span{
+  padding:6px 9px;
+  border-radius:999px;
+  background:rgba(255,255,255,.52);
+  border:1px solid rgba(255,255,255,.68);
+  color:#42475c;
+  font-size:9px;
+  font-weight:900;
+}
+
+.project-links{
+  position:absolute;
+  left:18px;
+  right:18px;
+  bottom:18px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:10px;
+}
+
+.project-link{
+  height:36px;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:8px;
+  padding:0 13px;
+  border-radius:999px;
+  color:#22263c;
+  text-decoration:none;
+  background:rgba(255,255,255,.64);
+  border:1px solid rgba(255,255,255,.76);
+  font-size:10px;
+  font-weight:900;
+  transition:.2s ease;
+}
+
+.project-link:hover{
+  transform:translateY(-2px);
+  color:#7c3aed;
+}
+
+.project-card.has-link p{
+  padding-bottom:58px;
+}
+
+.project-card.has-link .pill{
+  display:none;
+}
+
 @media(max-width:950px){
   .nav-links{display:none}
   .hero-wrap{grid-template-columns:1fr}
@@ -690,7 +894,9 @@ section{
   .avatar-card{left:50%;right:auto;transform:translateX(-50%)}
   .section-grid{grid-template-columns:1fr}
   .projects-row{grid-template-columns:1fr 1fr}
+  .project-card.featured{grid-column:span 1}
   .education-grid{grid-template-columns:1fr}
+  .leadership-grid{grid-template-columns:1fr}
   .skills-contact{grid-template-columns:1fr}
 }
 
@@ -701,6 +907,7 @@ section{
   .stats{grid-template-columns:repeat(2,1fr)}
   .projects-row{grid-template-columns:1fr}
   .exp-card{grid-template-columns:1fr}
+  .edu-card{grid-template-columns:1fr;padding:24px}
   .avatar-card{height:330px}
   .theme-dot{display:none}
 }
@@ -732,13 +939,12 @@ section{
       <a href="#experience">Experience</a>
       <a href="#projects">Projects</a>
       <a href="#education">Education</a>
+      <a href="#leadership">Leadership</a>
       <a href="#skills">Skills</a>
       <a href="#contact">Contact</a>
     </div>
 
-    <div class="theme-dot">
-      <i class="fa-regular fa-sun"></i>
-    </div>
+    <a href="Venkat_Koushik_Pillala_Resume.pdf" class="nav-cta" download>Resume</a>
   </div>
 </nav>
 
@@ -754,24 +960,35 @@ section{
       </h1>
 
       <p class="hero-copy">
-        Designing premium machine learning systems, autonomous AI architectures,
-        behavioral intelligence, and scalable deployment pipelines that solve real-world problems.
+        AI/ML Engineer building AI systems that can be tested, trusted, and deployed.
+        <br><br>
+        Focused on LLM red-teaming, private RAG platforms, multimodal retrieval,
+        hallucination analysis, and production-ready ML workflows using FastAPI,
+        LangChain, ChromaDB, PyTorch, and Docker.
       </p>
+
+      <div class="focus-strip">
+        <span class="focus-chip">LLM Evaluation</span>
+        <span class="focus-chip">RAG Systems</span>
+        <span class="focus-chip">AI Safety</span>
+        <span class="focus-chip">Multimodal AI</span>
+        <span class="focus-chip">FastAPI Deployment</span>
+      </div>
 
       <div class="hero-actions">
         <a href="#projects" class="btn btn-main">
           Explore My Work <i class="fa-solid fa-arrow-right"></i>
         </a>
 
-        <a href="Venkat_koushik_resume.pdf" class="btn btn-soft glass" download>
+        <a href="Venkat_Koushik_Pillala_Resume.pdf" class="btn btn-soft glass" download>
           Download Resume <i class="fa-solid fa-download"></i>
         </a>
       </div>
 
       <div class="stats glass liquid">
         <div class="stat">
-          <strong>15+</strong>
-          <span>Projects</span>
+          <strong>10+</strong>
+          <span>AI/ML Projects</span>
         </div>
 
         <div class="stat">
@@ -780,8 +997,8 @@ section{
         </div>
 
         <div class="stat">
-          <strong>4</strong>
-          <span>Internships</span>
+          <strong>3</strong>
+          <span>Applied AI Roles</span>
         </div>
 
         <div class="stat">
@@ -826,23 +1043,23 @@ section{
 
             <div class="meta">
               <span>Aspire Technolab</span>
-              <span>Dec 2023 to May 2024</span>
+              <span>Jan 2024 to May 2024</span>
               <span>Bengaluru, India</span>
             </div>
 
             <ul>
-              <li>Worked on domain-specific LLMs using Llama 2, LoRA, tokenization, and performance benchmarking.</li>
-              <li>Built NLP classification systems for sentiment analysis and spam detection using PyTorch and Hugging Face.</li>
-              <li>Supported CNN-based visual inspection workflows with OpenCV preprocessing and REST API integration.</li>
+              <li>Supported domain-specific LLM experimentation using LLaMA 2 and LoRA, covering tokenization, prompt testing, benchmark execution, and model-output review.</li>
+              <li>Developed NLP classification workflows for sentiment analysis and spam detection using PyTorch and Hugging Face Transformers.</li>
+              <li>Built CNN-based visual inspection experiments with OpenCV preprocessing, REST API integration, and failure-pattern analysis.</li>
             </ul>
           </div>
         </article>
 
         <article class="exp-card glass liquid">
-          <div class="logo-box">Fun<br>Motion</div>
+          <div class="logo-box">AI<br>Game</div>
 
           <div>
-            <h3>Game Development Intern</h3>
+            <h3>Game Development Intern, AI/ML Systems</h3>
 
             <div class="meta">
               <span>FunMotionLabs</span>
@@ -852,30 +1069,9 @@ section{
             </div>
 
             <ul>
-              <li>Built modular gameplay components for interactive game environments across hybrid production cycles.</li>
-              <li>Engineered NPC behavior systems using Finite State Machines for dynamic in-game decision-making.</li>
-              <li>Prototyped AR and VR experiences using Unity and OpenXR with spatial 3D interaction models.</li>
-            </ul>
-          </div>
-        </article>
-
-        <article class="exp-card glass liquid">
-          <div class="logo-box">Kurenai</div>
-
-          <div>
-            <h3>Technical Intern, Kurenai Division</h3>
-
-            <div class="meta">
-              <span>Kurenai, FunMotionLabs Division</span>
-              <span>Feb 2023 to Apr 2023</span>
-              <span>Chennai, India</span>
-              <span>Remote</span>
-            </div>
-
-            <ul>
-              <li>Delivered a focused 3-month module with specialized gameplay components for parent pipeline integration.</li>
-              <li>Implemented responsive NPC logic using FSM-based architectures and reusable modular systems.</li>
-              <li>Coordinated technical handoff, version control, and integration consistency across environments.</li>
+              <li>Developed intelligent agent behavior systems using machine learning concepts, heuristic decision logic, and Finite State Machines.</li>
+              <li>Built NLP-based interaction flows to map user inputs into intent-driven triggers, context-aware responses, and in-game actions.</li>
+              <li>Applied reinforcement learning concepts and simulation testing to improve autonomous navigation, behavior consistency, and response selection.</li>
             </ul>
           </div>
         </article>
@@ -893,8 +1089,9 @@ section{
             </div>
 
             <ul>
-              <li>Built end-to-end ML workflows on AWS SageMaker from S3 data ingestion to endpoint deployment.</li>
-              <li>Used AWS Glue, Rekognition, and Comprehend for ETL, visual classification, and NLP entity extraction.</li>
+              <li>Built cloud-based ML workflows on AWS SageMaker from S3 data ingestion and feature preparation to model training and endpoint deployment.</li>
+              <li>Developed ETL and feature engineering pipelines using AWS Glue and SageMaker Data Wrangler for structured training inputs.</li>
+              <li>Implemented applied AI workflows with Amazon Rekognition for image analysis and Amazon Comprehend for NLP-based entity extraction.</li>
             </ul>
           </div>
         </article>
@@ -909,117 +1106,105 @@ section{
         <div class="section-label">Projects</div>
 
         <h2 class="section-title">
-          <span>15 Production Grade</span>
-          <span>AI Architectures.</span>
+          <span>ML Systems &amp;</span>
+          <span>Applied AI Projects.</span>
         </h2>
       </div>
     </div>
 
     <div class="projects-row">
 
-      <article class="project-card glass liquid">
+      <article class="project-card glass liquid has-link featured">
         <strong>01</strong>
-        <h3>Biomedical Multimodal RAG</h3>
-        <p>Medical text and image retrieval system using IDEFICS2-8B, OpenCLIP, LangChain, FAISS, PyTorch, and Docker.</p>
-        <div class="pill">VLM / Medical AI</div>
+        <h3>LLM Red-Team Risk Evaluator</h3>
+        <div class="project-tags"><span>AI Safety</span><span>FastAPI</span><span>Streamlit</span><span>LLM Eval</span></div>
+        <p>Lightweight dashboard and API for testing hallucination, jailbreak, prompt injection, toxicity, and privacy leakage risks in LLM systems.</p>
+        <div class="project-links"><a class="project-link" href="https://github.com/venkatkoushik22/llm-redteam-risk-evaluator" target="_blank" rel="noopener noreferrer">GitHub <i class="fa-brands fa-github"></i></a><span class="pill">Red Teaming</span></div>
       </article>
 
-      <article class="project-card glass liquid">
+      <article class="project-card glass liquid has-link featured">
         <strong>02</strong>
-        <h3>Secure Local RAG Platform</h3>
-        <p>Privacy-first local document intelligence system using LLaMA 3, ChromaDB, LangChain, FastAPI, and Docker.</p>
-        <div class="pill">LLaMA 3 / ChromaDB</div>
+        <h3>Secure Local RAG Evaluation Platform</h3>
+        <div class="project-tags"><span>LLaMA 3</span><span>ChromaDB</span><span>LangChain</span><span>Docker</span></div>
+        <p>Privacy-first document intelligence platform for semantic search, question answering, technical analysis, and local RAG evaluation without external API reliance.</p>
+        <div class="project-links"><a class="project-link" href="https://github.com/venkatkoushik22/Secure-Local-RAG-Private-Document-Intelligence-Platform" target="_blank" rel="noopener noreferrer">GitHub <i class="fa-brands fa-github"></i></a><span class="pill">Private RAG</span></div>
       </article>
 
-      <article class="project-card glass liquid">
+      <article class="project-card glass liquid has-link featured">
         <strong>03</strong>
-        <h3>Market Intelligence Agent</h3>
-        <p>Autonomous analytics system translating natural language into SQL pipelines with memory and business insight generation.</p>
-        <div class="pill">OpenAI / BigQuery</div>
+        <h3>Biomedical Multimodal RAG System</h3>
+        <div class="project-tags"><span>IDEFICS2</span><span>OpenCLIP</span><span>MiniLM</span><span>PyTorch</span></div>
+        <p>Biomedical RAG system combining medical text and pathology images through dual-encoder retrieval, multimodal embeddings, and VLM-based answer generation.</p>
+        <div class="project-links"><a class="project-link" href="https://github.com/venkatkoushik22/Biomedical-Multimodal-RAG-Intelligence-System" target="_blank" rel="noopener noreferrer">GitHub <i class="fa-brands fa-github"></i></a><span class="pill">Multimodal AI</span></div>
       </article>
 
-      <article class="project-card glass liquid">
+      <article class="project-card glass liquid has-link featured">
         <strong>04</strong>
-        <h3>Biomedical Agent</h3>
-        <p>LangGraph-powered research orchestration using biomedical APIs, retrieval workflows, and reasoning pipelines.</p>
-        <div class="pill">LangGraph / Bio Info</div>
+        <h3>Autonomous Portfolio Assistant</h3>
+        <div class="project-tags"><span>Agentic RAG</span><span>Pinecone</span><span>Hybrid Search</span><span>NLP</span></div>
+        <p>Agentic RAG system using hybrid search and query transformation to answer professional portfolio questions with context-aware career insights.</p>
+        <div class="project-links"><a class="project-link" href="https://github.com/venkatkoushik22/Autonomous-Portfolio-Assistant-System" target="_blank" rel="noopener noreferrer">GitHub <i class="fa-brands fa-github"></i></a><span class="pill">Agentic RAG</span></div>
       </article>
 
-      <article class="project-card glass liquid">
+      <article class="project-card glass liquid has-link">
         <strong>05</strong>
-        <h3>Portfolio Assistant</h3>
-        <p>NLP-powered assistant for professional portfolio queries, skill summaries, and project exploration.</p>
-        <div class="pill">NLP / RAG</div>
+        <h3>Market Intelligence Agent</h3>
+        <div class="project-tags"><span>Agents</span><span>Research</span><span>Analytics</span></div>
+        <p>AI-powered multi-agent system for market research, trend analysis, real-time data collection, and actionable business insight generation.</p>
+        <div class="project-links"><a class="project-link" href="https://github.com/venkatkoushik22/Market-Intelligence-Agent" target="_blank" rel="noopener noreferrer">GitHub <i class="fa-brands fa-github"></i></a><span class="pill">Business AI</span></div>
       </article>
 
-      <article class="project-card glass liquid">
+      <article class="project-card glass liquid has-link">
         <strong>06</strong>
+        <h3>AutoML Studio</h3>
+        <div class="project-tags"><span>MLOps</span><span>MLflow</span><span>SHAP</span><span>FastAPI</span></div>
+        <p>Low-code MLOps platform for rapid model development with automated pipelines, experiment tracking, explainability, and deployment-ready APIs.</p>
+        <div class="project-links"><a class="project-link" href="https://github.com/venkatkoushik22/AutoML-Studio" target="_blank" rel="noopener noreferrer">GitHub <i class="fa-brands fa-github"></i></a><span class="pill">MLOps</span></div>
+      </article>
+
+      <article class="project-card glass liquid has-link">
+        <strong>07</strong>
         <h3>Speech Emotion Recognition</h3>
-        <p>Real-time 1D CNN audio classification system using PyTorch and Librosa for emotion detection.</p>
-        <div class="pill">PyTorch / CNN</div>
+        <div class="project-tags"><span>1D CNN</span><span>MFCC</span><span>PyTorch</span></div>
+        <p>Deep learning system using 1D CNNs and 40 MFCC features to classify vocal affect from speech signals.</p>
+        <div class="project-links"><a class="project-link" href="https://github.com/venkatkoushik22/Speech-Emotion-Recognition" target="_blank" rel="noopener noreferrer">GitHub <i class="fa-brands fa-github"></i></a><span class="pill">Audio AI</span></div>
+      </article>
+
+      <article class="project-card glass liquid has-link">
+        <strong>08</strong>
+        <h3>Bank Transaction Fraud EDA</h3>
+        <div class="project-tags"><span>Pandas</span><span>Seaborn</span><span>Fraud</span></div>
+        <p>Exploratory data analysis of bank transaction behavior, geographic patterns, customer activity, and financial risk indicators.</p>
+        <div class="project-links"><a class="project-link" href="https://github.com/venkatkoushik22/bank-transaction-analysis-eda" target="_blank" rel="noopener noreferrer">GitHub <i class="fa-brands fa-github"></i></a><span class="pill">FinTech</span></div>
+      </article>
+
+      <article class="project-card glass liquid has-link">
+        <strong>09</strong>
+        <h3>Fake Currency Detection</h3>
+        <div class="project-tags"><span>CNN</span><span>Computer Vision</span><span>OpenCV</span></div>
+        <p>Computer vision system using convolutional neural networks to detect counterfeit currency from image-based features.</p>
+        <div class="project-links"><a class="project-link" href="https://github.com/venkatkoushik22/fake-currency-detection" target="_blank" rel="noopener noreferrer">GitHub <i class="fa-brands fa-github"></i></a><span class="pill">Vision AI</span></div>
       </article>
 
       <article class="project-card glass liquid">
-        <strong>07</strong>
+        <strong>10</strong>
         <h3>Robotic Manipulation</h3>
         <p>Reinforcement learning and behavioral cloning pipeline for simulated robotic control environments.</p>
         <div class="pill">RL / PyBullet</div>
       </article>
 
       <article class="project-card glass liquid">
-        <strong>08</strong>
-        <h3>Clinical LLM Pipeline</h3>
-        <p>Healthcare RAG benchmarking framework for medical faithfulness, retrieval quality, and answer reliability.</p>
-        <div class="pill">MLOps / Clinical AI</div>
-      </article>
-
-      <article class="project-card glass liquid">
-        <strong>09</strong>
+        <strong>11</strong>
         <h3>Anomaly Detection Engine</h3>
         <p>Streaming XGBoost service for telemetry analysis, security monitoring, and anomaly classification.</p>
         <div class="pill">XGBoost / Kafka</div>
       </article>
 
       <article class="project-card glass liquid">
-        <strong>10</strong>
-        <h3>Scalable ETL Pipeline</h3>
-        <p>Distributed PySpark pipelines on AWS EMR and Redshift for large-scale analytics workflows.</p>
-        <div class="pill">AWS / Spark</div>
-      </article>
-
-      <article class="project-card glass liquid">
-        <strong>11</strong>
-        <h3>Blockchain Compliance</h3>
-        <p>Ethereum smart contracts for tamper-proof AI training audit trails and compliance verification.</p>
-        <div class="pill">Solidity / Web3</div>
-      </article>
-
-      <article class="project-card glass liquid">
         <strong>12</strong>
-        <h3>Neural Query System</h3>
-        <p>Multi-stage neural document ranking system using BERT, FAISS, and Kubernetes deployment.</p>
-        <div class="pill">BERT / FAISS</div>
-      </article>
-
-      <article class="project-card glass liquid">
-        <strong>13</strong>
         <h3>Brain Tumor Detection</h3>
         <p>Medical imaging system using OpenCV and Fuzzy C-means segmentation for diagnostic support.</p>
         <div class="pill">OpenCV / Imaging</div>
-      </article>
-
-      <article class="project-card glass liquid">
-        <strong>14</strong>
-        <h3>Fraud Detection System</h3>
-        <p>Supervised ML system for identifying high-risk financial transactions and suspicious user behavior.</p>
-        <div class="pill">ML / Fraud</div>
-      </article>
-
-      <article class="project-card glass liquid">
-        <strong>15</strong>
-        <h3>Hotstar Clone</h3>
-        <p>Responsive streaming frontend demonstrating modern layout, UI structure, and visual design fundamentals.</p>
-        <div class="pill">Frontend / UI</div>
       </article>
 
     </div>
@@ -1063,6 +1248,41 @@ section{
     </div>
   </section>
 
+  <section class="bento glass liquid reveal" id="leadership">
+    <div class="projects-head">
+      <div>
+        <div class="section-label">Leadership</div>
+
+        <h2 class="section-title">
+          <span>Beyond the</span>
+          <span>Build.</span>
+        </h2>
+      </div>
+    </div>
+
+    <div class="leadership-grid">
+
+      <article class="lead-card glass liquid">
+        <div class="lead-icon"><i class="fa-solid fa-cloud"></i></div>
+        <h3>Cloud and AI Club Leadership</h3>
+        <p>Led AWS Cloud Club and AI-UI/UX Club activities focused on cloud learning, AI tooling, product design, and hands-on technical discussions.</p>
+      </article>
+
+      <article class="lead-card glass liquid">
+        <div class="lead-icon"><i class="fa-solid fa-microphone-lines"></i></div>
+        <h3>Debate and Communication</h3>
+        <p>Coordinated Debate Club sessions that strengthened structured thinking, public speaking, and the ability to explain technical ideas clearly.</p>
+      </article>
+
+      <article class="lead-card glass liquid">
+        <div class="lead-icon"><i class="fa-solid fa-pen-ruler"></i></div>
+        <h3>Freelance and Project-Based Design Work</h3>
+        <p>Contributed to small website, UI, and project-based development work as part of professional service efforts, supporting layout design, frontend updates, content structuring, and AI-assisted workflow experimentation.</p>
+      </article>
+
+    </div>
+  </section>
+
   <section class="skills-contact reveal" id="skills">
 
     <div class="bento glass liquid">
@@ -1080,6 +1300,8 @@ section{
         <span class="skill">FastAPI</span>
         <span class="skill">C#</span>
         <span class="skill">RAG Pipelines</span>
+        <span class="skill">LLM Evaluation</span>
+        <span class="skill">AI Safety</span>
         <span class="skill">Agentic Workflows</span>
         <span class="skill">LangChain</span>
         <span class="skill">LangGraph</span>
@@ -1112,8 +1334,8 @@ section{
       <div class="section-label">Let's Connect</div>
 
       <h2 class="section-title" style="font-size:34px;">
-        <span>Open to build</span>
-        <span>the future.</span>
+        <span>Open to AI/ML</span>
+        <span>opportunities.</span>
       </h2>
 
       <div class="contact-icons">
@@ -1121,16 +1343,12 @@ section{
           <i class="fa-regular fa-envelope"></i>
         </a>
 
-        <a href="https://linkedin.com" target="_blank" title="LinkedIn">
+        <a href="https://www.linkedin.com/in/pillala-venkat-koushik" target="_blank" rel="noopener noreferrer" title="LinkedIn">
           <i class="fa-brands fa-linkedin-in"></i>
         </a>
 
-        <a href="https://github.com" target="_blank" title="GitHub">
+        <a href="https://github.com/venkatkoushik22" target="_blank" rel="noopener noreferrer" title="GitHub">
           <i class="fa-brands fa-github"></i>
-        </a>
-
-        <a href="tel:+12018983362" title="Phone">
-          <i class="fa-solid fa-phone"></i>
         </a>
       </div>
     </div>
